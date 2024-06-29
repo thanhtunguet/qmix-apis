@@ -1,7 +1,5 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { UserModule } from './user/user.module';
-import { DbModule } from './db/db.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import {
   DB_HOST,
@@ -12,6 +10,10 @@ import {
   DB_USER,
 } from './config/dotenv';
 import * as entities from './entities';
+import { UserModule } from './modules/user/user.module';
+import { DbModule } from './modules/db/db.module';
+import { GenderModule } from './modules/gender/gender.module';
+import { RoleModule } from './modules/role/role.module';
 
 @Module({
   imports: [
@@ -27,8 +29,10 @@ import * as entities from './entities';
       entities: Object.values(entities),
       synchronize: false, // Set to false in production
     }),
-    UserModule,
     DbModule,
+    GenderModule,
+    RoleModule,
+    UserModule,
   ],
   controllers: [],
   providers: [],

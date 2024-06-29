@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import * as entities from '../entities';
+import * as entities from '../../entities';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({

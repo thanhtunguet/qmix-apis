@@ -1,44 +1,44 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from 'src/entities';
+import { Role } from '../../entities';
 import { Repository } from 'typeorm';
+import { QueryFilter } from '../../core/QueryFilter';
 
 @Injectable()
-export class UserService {
+export class RoleService {
   constructor(
-    @InjectRepository(User)
-    private readonly userRepository: Repository<User>,
+    @InjectRepository(Role)
+    private readonly userRepository: Repository<Role>,
   ) {}
 
-  async list(filter): Promise<User[]> {
+  async list(filter: QueryFilter): Promise<Role[]> {
     const options = {
       skip: filter.skip,
       take: filter.take,
       order: {
         [filter.orderBy]: filter.orderType,
       },
-      where: filter.where,
     };
     return this.userRepository.find(options);
   }
 
-  async count(filter): Promise<number> {
-    return this.userRepository.count({ where: filter.where });
+  async count(filter: QueryFilter): Promise<number> {
+    return this.userRepository.count({});
   }
 
-  async getById(id: number, relations: string[] = []): Promise<User> {
+  async getById(id: number, relations: string[] = []): Promise<Role> {
     return this.userRepository.findOne({
       where: { id },
       relations,
     });
   }
 
-  async create(user: Partial<User>): Promise<User> {
-    const newUser = this.userRepository.create(user);
-    return this.userRepository.save(newUser);
+  async create(user: Partial<Role>): Promise<Role> {
+    const newRole = this.userRepository.create(user);
+    return this.userRepository.save(newRole);
   }
 
-  async update(id: number, user: Partial<User>): Promise<User> {
+  async update(id: number, user: Partial<Role>): Promise<Role> {
     await this.userRepository.update(id, user);
     return this.getById(id);
   }

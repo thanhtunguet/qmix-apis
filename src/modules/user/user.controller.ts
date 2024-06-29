@@ -11,13 +11,13 @@ import {
 import { ApiTags } from '@nestjs/swagger';
 import { User } from 'src/entities';
 import { UserService } from './user.service';
-import { QueryFilter } from '../core/QueryFilter';
-import { UpdateUserDto } from '../dtos/update-user.dto';
-import { CreateUserDto } from '../dtos/create-user.dto';
-import { UserDto } from '../dtos/user.dto';
+import { QueryFilter } from '../../core/QueryFilter';
+import { UserDto } from '../../dtos/user.dto';
+import { UpdateUserDto } from '../../dtos/update-user.dto';
+import { CreateUserDto } from '../../dtos/create-user.dto';
 
 @ApiTags('User')
-@Controller('api/users')
+@Controller('api/user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
