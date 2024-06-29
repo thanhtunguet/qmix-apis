@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { UserModule } from './user/user.module';
+import { DbModule } from './db/db.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import {
   DB_HOST,
   DB_NAME,
@@ -12,7 +12,6 @@ import {
   DB_USER,
 } from './config/dotenv';
 import * as entities from './entities';
-import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -26,11 +25,12 @@ import { UserModule } from './user/user.module';
       database: DB_NAME,
       schema: DB_SCHEMA,
       entities: Object.values(entities),
-      synchronize: true, // Set to false in production
+      synchronize: false, // Set to false in production
     }),
     UserModule,
+    DbModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

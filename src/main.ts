@@ -10,6 +10,7 @@ async function bootstrap() {
     .setTitle(name)
     .setDescription(description)
     .setVersion(version)
+    .addServer('http://localhost:3000')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);

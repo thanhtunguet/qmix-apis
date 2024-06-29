@@ -1,25 +1,9 @@
-export { ErrorcorrectionQuestions } from './ErrorcorrectionQuestions';
+export { Gender } from './Gender';
 
-export { FillinblanksQuestions } from './FillinblanksQuestions';
+export { Grade } from './Grade';
 
-export { McqQuestions } from './McqQuestions';
+export { Role } from './Role';
 
-export { PrepositionQuestions } from './PrepositionQuestions';
+export { Test } from './Test';
 
-export { Questions } from './Questions';
-
-export { Questiontypes } from './Questiontypes';
-
-export { ReadingcomprehensionQuestions } from './ReadingcomprehensionQuestions';
-
-export { SentencerewritingQuestions } from './SentencerewritingQuestions';
-
-export { SentencetransformationQuestions } from './SentencetransformationQuestions';
-
-export { Testquestions } from './Testquestions';
-
-export { Tests } from './Tests';
-
-export { Users } from './Users';
-
-export { WordformQuestions } from './WordformQuestions';
+export { User } from './User';
